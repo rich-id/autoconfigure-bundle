@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.5/phpunit.xsd"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+         failOnWarning="true"
+         failOnRisky="true"
+         forceCoversAnnotation="true"
+>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <env name="KERNEL_DIR" value="Tests/Resources/Kernel" />
+        <env name="KERNEL_CLASS" value="RichId\TemplateBundle\Tests\Resources\Kernel\TestKernel" />
+        <env name="SHELL_VERBOSITY" value="-1" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
+        <env name="SYMFONY_PHPUNIT_REMOVE" value="" />
+        <env name="SYMFONY_PHPUNIT_VERSION" value="8.5" />
+    </php>
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory suffix="Test.php">Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <directory>bin</directory>
+                <directory>DependencyInjection</directory>
+                <directory>Resources</directory>
+                <directory>Tests</directory>
+                <directory>var</directory>
+                <directory>vendor</directory>
+                <file>phpunit-filter.php</file>
+                <file>phpinsights.php</file>
+                <file>RichIdTemplateBundle.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <extensions>
+        <extension class="RichCongress\TestFramework\PHPUnitExtension">
+            <arguments>
+                <string>RichCongress\WebTestBundle\TestHook</string>
+            </arguments>
+        </extension>
+    </extensions>
+</phpunit>

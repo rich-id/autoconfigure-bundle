@@ -1,0 +1,45 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-18.04
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@v2
+              with:
+                  persist-credentials: false
+
+            - name: Start docker 🔧
+              run: |
+                  docker-compose -f docker-compose.yml -f .github/docker-compose.yml up -d
+
+            - name: Cache multiple paths
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      **/vendor
+                  key: ${{ runner.os }}-${{ hashFiles('*.lock') }}
+
+            - name: Install the dependencies 🔧
+              run: |
+                  docker-compose exec -T application composer install --prefer-dist --no-interaction --no-progress
+
+            - name: Execute the tests 🔧
+              run: |
+                  docker-compose exec -T application php -d extension=pcov.so ./bin/phpunit --configuration phpunit.xml.dist --colors=never --coverage-text --log-junit reports/junit.xml --coverage-html reports/coverage
+
+            - name: Upload results to Coveralls 🚀
+              env:
+                  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_SECRET }}
+              run: |
+                  docker-compose exec -T application composer global require twinh/php-coveralls --prefer-dist --no-interaction --no-progress
+                  docker-compose exec -T -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" application /home/application/.composer/vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+
+            - name: PHPInsights 🔧
+              run: |
+                  docker-compose exec -T application ./bin/phpinsights
+
+            - name: PHPStan 🔧
+              run: |
+                  docker-compose exec -T application ./bin/phpstan

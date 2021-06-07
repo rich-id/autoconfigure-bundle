@@ -1,0 +1,12 @@
+parameters:
+    level: max
+    paths:
+        - ./
+
+    excludes_analyse:
+        - .github
+        - bin
+        - Docs
+        - Resources
+        - vendor
+        - phpinsights.php

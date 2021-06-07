@@ -1,0 +1,4 @@
+version: '3.7'
+services:
+    application:
+        user: '1001:116'
