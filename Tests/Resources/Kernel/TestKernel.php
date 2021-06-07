@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace RichId\TemplateBundle\Tests\Resources\Kernel;
+namespace RichId\AutoconfigureBundle\Tests\Resources\Kernel;
 
 use RichCongress\WebTestBundle\Kernel\DefaultTestKernel;
 
 /**
  * Class TestKernel
  *
- * @package    RichId\TemplateBundle\Tests\Resources\Kernel
+ * @package    RichId\AutoconfigureBundle\Tests\Resources\Kernel
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 RichID (https://www.rich-id.fr)
  */

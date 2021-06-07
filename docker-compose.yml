@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     application:
-        container_name: template-bundle_app
+        container_name: autoconfigure-bundle_app
         image: richcongress/php:7.3
         volumes:
             - .:/app:rw,cached

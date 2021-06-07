@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace RichId\TemplateBundle\DependencyInjection;
+namespace RichId\AutoconfigureBundle\DependencyInjection;
 
 use RichCongress\BundleToolbox\Configuration\AbstractExtension;
+use RichId\AutoconfigureBundle\AutoTag\AutoconfigureServiceInterface;
+use RichId\AutoconfigureBundle\DependencyInjection\CompilerPass\TagAnnotationCompilerPass;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -12,7 +14,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class RichIdTemplateExtension extends AbstractExtension
+class RichIdAutoconfigureExtension extends AbstractExtension
 {
     /**
      * @param array<string, mixed> $configs
@@ -27,5 +29,7 @@ class RichIdTemplateExtension extends AbstractExtension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources'));
         $loader->load('services.xml');
+
+        $container->registerForAutoconfiguration(AutoconfigureServiceInterface::class)->addTag(TagAnnotationCompilerPass::AUTOCONFIGURE_SERVICE_TAG);
     }
 }

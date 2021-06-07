@@ -1,5 +1,5 @@
 {
-    "name": "rich-id/template-bundle",
+    "name": "rich-id/autoconfigure-bundle",
     "description": "A magic bundle",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -11,9 +11,9 @@
     ],
     "support": {
         "email": "contact@rich-id.com",
-        "source": "https://github.com/rich-id/template-bundle",
-        "docs": "https://github.com/rich-id/template-bundle/blob/master/README.md",
-        "issues": "https://github.com/rich-id/template-bundle/issues"
+        "source": "https://github.com/rich-id/autoconfigure-bundle",
+        "docs": "https://github.com/rich-id/autoconfigure-bundle/blob/master/README.md",
+        "issues": "https://github.com/rich-id/autoconfigure-bundle/issues"
     },
     "require": {
         "php": ">=7.3",
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RichId\\TemplateBundle\\": ""
+            "RichId\\AutoconfigureBundle\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RichId\\TemplateBundle\\Tests\\": "Tests/"
+            "RichId\\AutoconfigureBundle\\Tests\\": "Tests/"
         }
     },
     "config": {
