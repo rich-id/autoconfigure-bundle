@@ -5678,19 +5678,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rich-id/static-analysis.git",
-                "reference": "bfdedff6a3d6eee3288c0ba3e858ec56e2987d64"
+                "reference": "a3edddd649f94c89cfb1ab626c3b27e1cca18268"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/bfdedff6a3d6eee3288c0ba3e858ec56e2987d64",
-                "reference": "bfdedff6a3d6eee3288c0ba3e858ec56e2987d64",
+                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/a3edddd649f94c89cfb1ab626c3b27e1cca18268",
+                "reference": "a3edddd649f94c89cfb1ab626c3b27e1cca18268",
                 "shasum": ""
             },
             "require": {
                 "brainmaestro/composer-git-hooks": "^2.8",
-                "nunomaduro/phpinsights": "^1.14",
+                "friendsofphp/php-cs-fixer": "^2.0 || ^3.0",
+                "nunomaduro/phpinsights": "^1.0",
                 "phpmetrics/phpmetrics": "^2.7",
-                "phpstan/phpstan": "^0.12.48"
+                "phpstan/phpstan": "^0.12"
             },
             "default-branch": true,
             "bin": [
@@ -5712,7 +5713,7 @@
                 "issues": "https://github.com/rich-id/static-analysis/issues",
                 "source": "https://github.com/rich-id/static-analysis/tree/master"
             },
-            "time": "2020-10-14T05:47:27+00:00"
+            "time": "2021-06-08T11:38:03+00:00"
         },
         {
             "name": "richcongress/test-framework",

@@ -28,3 +28,7 @@
 
 # Database
 /.db
+cghooks.lock
+
+# PHP CS Fixer
+/.php_cs.cache

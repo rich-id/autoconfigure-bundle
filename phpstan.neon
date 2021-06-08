@@ -8,5 +8,6 @@ parameters:
         - bin
         - Docs
         - Resources
+        - var
         - vendor
         - phpinsights.php

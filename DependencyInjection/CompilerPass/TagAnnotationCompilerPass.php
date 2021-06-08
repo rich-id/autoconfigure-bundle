@@ -32,7 +32,6 @@ class TagAnnotationCompilerPass extends AbstractCompilerPass
             $configuration = $this->getServiceTagConfiguration($definition);
 
             if ($configuration !== null) {
-                var_dump($configuration);
                 $definition->addTag($configuration->name, $configuration->options);
             }
         }
