@@ -51,10 +51,10 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "./bin/php-cs-fixer fix --allow-risky=yes"
+                "./bin/php-cs-fixer fix ./ --allow-risky=yes"
             ],
             "pre-push": [
-                "./bin/php-cs-fixer fix --dry-run --allow-risky=yes"
+                "./bin/php-cs-fixer fix ./ --dry-run --allow-risky=yes"
             ]
         }
     }

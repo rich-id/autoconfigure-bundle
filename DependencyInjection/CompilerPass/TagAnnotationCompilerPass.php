@@ -1,20 +1,19 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\DependencyInjection\CompilerPass;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use RichCongress\BundleToolbox\Configuration\AbstractCompilerPass;
 use RichId\AutoconfigureBundle\AutoTag\Annotation\ServiceTag;
-use RichId\AutoconfigureBundle\AutoTag\AutoconfigureServiceInterface;
 use RichId\AutoconfigureBundle\Model\ServiceTagConfiguration;
-use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
- * Class TagAnnotationCompilerPass
+ * Class TagAnnotationCompilerPass.
  *
- * @package    RichId\AutoconfigureBundle\DependencyInjection\CompilerPass
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  */

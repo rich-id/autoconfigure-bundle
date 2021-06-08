@@ -1,13 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Model;
 
 use RichId\AutoconfigureBundle\AutoTag\Annotation\ServiceTag;
 
 /**
- * Class ServiceTagConfiguration
+ * Class ServiceTagConfiguration.
  *
- * @package    RichId\AutoconfigureBundle\Model
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  */

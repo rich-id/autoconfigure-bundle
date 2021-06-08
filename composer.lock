@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe960a3b2fa02f2bf10017408be2bfb7",
+    "content-hash": "f1b2ac9472e6c19b7c26c0d0bdef67ca",
     "packages": [
         {
             "name": "psr/container",
@@ -5678,12 +5678,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rich-id/static-analysis.git",
-                "reference": "a3edddd649f94c89cfb1ab626c3b27e1cca18268"
+                "reference": "a66d28aeb83a1cd4486080978ae36bcd52ec3e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/a3edddd649f94c89cfb1ab626c3b27e1cca18268",
-                "reference": "a3edddd649f94c89cfb1ab626c3b27e1cca18268",
+                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/a66d28aeb83a1cd4486080978ae36bcd52ec3e2e",
+                "reference": "a66d28aeb83a1cd4486080978ae36bcd52ec3e2e",
                 "shasum": ""
             },
             "require": {
@@ -5713,7 +5713,7 @@
                 "issues": "https://github.com/rich-id/static-analysis/issues",
                 "source": "https://github.com/rich-id/static-analysis/tree/master"
             },
-            "time": "2021-06-08T11:38:03+00:00"
+            "time": "2021-06-08T12:09:59+00:00"
         },
         {
             "name": "richcongress/test-framework",
