@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle;
 
 use RichCongress\BundleToolbox\Configuration\AbstractBundle;
-use RichId\AutoconfigureBundle\DependencyInjection\CompilerPass\TagAnnotationCompilerPass;
+use RichId\AutoconfigureBundle\DependencyInjection\CompilerPass\AutoconfigureCompilerPass;
 
 class RichIdAutoconfigureBundle extends AbstractBundle
 {
-    public const COMPILER_PASSES = [TagAnnotationCompilerPass::class];
+    public const COMPILER_PASSES = [AutoconfigureCompilerPass::class];
 }

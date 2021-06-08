@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichId\AutoconfigureBundle\AutoTag\Annotation;
+namespace RichId\AutoconfigureBundle\Annotation;
 
 /**
  * Class EventListener.

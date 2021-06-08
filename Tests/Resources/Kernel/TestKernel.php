@@ -16,7 +16,7 @@ class TestKernel extends DefaultTestKernel
 {
     public function __construct()
     {
-        parent::__construct('test', false);
+        parent::__construct('test', true);
     }
 
     public function getConfigurationDir(): ?string

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace RichId\AutoconfigureBundle\AutoTag;
+namespace RichId\AutoconfigureBundle\EventListener;
 
 /**
- * Class AutoconfigureServiceInterface.
+ * Class EventListenerInterface.
  *
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  */
-interface AutoconfigureServiceInterface
+interface EventListenerInterface
 {
 }

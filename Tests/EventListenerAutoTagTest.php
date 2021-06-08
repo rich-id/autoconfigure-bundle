@@ -7,7 +7,8 @@ namespace RichId\AutoconfigureBundle\Tests;
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\AutoconfigureBundle\Tests\Resources\Event\DummyEvent;
-use RichId\AutoconfigureBundle\Tests\Resources\EventListener\TaggedEventListener;
+use RichId\AutoconfigureBundle\Tests\Resources\EventListener\ExplicitlyTaggedEventListener;
+use RichId\AutoconfigureBundle\Tests\Resources\EventListener\FromInterfaceEventListener;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -18,16 +19,29 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *
  * @TestConfig("container")
  *
- * @covers \RichId\AutoconfigureBundle\AutoTag\Annotation\EventListener
+ * @covers \RichId\AutoconfigureBundle\Annotation\EventListener
+ * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers \RichId\AutoconfigureBundle\Factory\Partials\EventListenerServiceConfigurationFactory
+ * @covers \RichId\AutoconfigureBundle\Factory\Partials\TagAnnotationServiceConfigurationFactory
+ * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
  */
 final class EventListenerAutoTagTest extends TestCase
 {
     /** @var EventDispatcherInterface */
     public $eventDispatcher;
 
-    public function testTaggedEventListener(): void
+    public function testExplicitlyTaggedEventListener(): void
     {
-        $eventListener = $this->getService(TaggedEventListener::class);
+        $eventListener = $this->getService(ExplicitlyTaggedEventListener::class);
+        self::assertSame(0, $eventListener->count);
+
+        $this->eventDispatcher->dispatch(new DummyEvent());
+        self::assertSame(1, $eventListener->count);
+    }
+
+    public function testFromInterfaceEventListener(): void
+    {
+        $eventListener = $this->getService(FromInterfaceEventListener::class);
         self::assertSame(0, $eventListener->count);
 
         $this->eventDispatcher->dispatch(new DummyEvent());
