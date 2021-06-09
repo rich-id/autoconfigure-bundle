@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\DependencyInjection\CompilerPass;
 
 use RichCongress\BundleToolbox\Configuration\AbstractCompilerPass;
+use RichId\AutoconfigureBundle\Annotation\ServiceArgument;
 use RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 use Symfony\Component\Cache\Psr16Cache;
@@ -40,7 +41,7 @@ class AutoconfigureCompilerPass extends AbstractCompilerPass
                 $configurations = ServiceConfigurationFactory::create($reflectionClass);
 
                 foreach ($configurations as $configuration) {
-                    $this->configure($definition, $configuration);
+                    $this->configure($container, $definition, $configuration);
                 }
             } catch (\Throwable $e) {
                 // Skip if it fails to get class information
@@ -48,7 +49,7 @@ class AutoconfigureCompilerPass extends AbstractCompilerPass
         }
     }
 
-    private function configure(Definition $definition, ServiceConfiguration $configuration): void
+    private function configure(ContainerBuilder $container, Definition $definition, ServiceConfiguration $configuration): void
     {
         $class = $definition->getClass();
         $reflectionClass = new \ReflectionClass($class);
@@ -59,6 +60,24 @@ class AutoconfigureCompilerPass extends AbstractCompilerPass
             if ($reflectionClass->hasMethod('setInnerService')) {
                 $innerService = $class . '.inner';
                 $definition->addMethodCall('setInnerService', [new Reference($innerService)]);
+            }
+        }
+
+        foreach ($configuration->getArguments() as $argument => $options) {
+            $type = $options['type'] ?? null;
+            $value = $options['value'] ?? null;
+
+            switch ($type) {
+                case ServiceArgument::SERVICE_TYPE:
+                    $definition->setArgument($argument, new Reference($value));
+                    break;
+
+                case ServiceArgument::PARAMETER_TYPE:
+                    $definition->setArgument($argument, $container->getParameter($value));
+                    break;
+
+                default:
+                    throw new \UnexpectedValueException('The type used a service configuration is wrong.');
             }
         }
 

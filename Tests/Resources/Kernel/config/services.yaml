@@ -1,3 +1,6 @@
+parameters:
+    test_parameter: 'This is a test'
+
 services:
     _defaults:
         autoconfigure: true

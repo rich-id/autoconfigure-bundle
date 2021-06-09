@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Annotation;
 
+use Doctrine\ORM\Mapping\Annotation;
+
 /**
  * Class ServiceTag.
  *
@@ -12,7 +14,7 @@ namespace RichId\AutoconfigureBundle\Annotation;
  *
  * @Annotation({"CLASS"})
  */
-class ServiceTag
+class ServiceTag implements Annotation
 {
     /** @var string */
     public $name;

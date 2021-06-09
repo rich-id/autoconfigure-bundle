@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use RichId\AutoconfigureBundle\Annotation\ServiceDecoration;
+use RichId\AutoconfigureBundle\Annotation\ServiceArgument;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
 /**
- * Class DecorationAnnotationServiceConfigurationFactory.
+ * Class ArgumentAnnotationServiceConfigurationFactory.
  *
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  */
-final class DecorationAnnotationServiceConfigurationFactory implements ServiceConfigurationFactoryInterface
+final class ArgumentAnnotationServiceConfigurationFactory implements ServiceConfigurationFactoryInterface
 {
     /** @var AnnotationReader */
     private static $annotationReader;
@@ -39,14 +39,20 @@ final class DecorationAnnotationServiceConfigurationFactory implements ServiceCo
         $classAnnotations = self::$annotationReader->getClassAnnotations($reflectionClass);
 
         return \array_filter($classAnnotations, static function ($annotation): bool {
-            return $annotation instanceof ServiceDecoration;
+            return $annotation instanceof ServiceArgument;
         });
     }
 
-    private static function buildServiceConfiguration(ServiceDecoration $serviceDecorator): ServiceConfiguration
+    private static function buildServiceConfiguration(ServiceArgument $serviceArgument): ServiceConfiguration
     {
         $configuration = new ServiceConfiguration();
-        $configuration->decorates($serviceDecorator->decorates);
+        $configuration->setArgument(
+            $serviceArgument->argument,
+            [
+                'type'  => $serviceArgument->type,
+                'value' => $serviceArgument->value,
+            ]
+        );
 
         return $configuration;
     }

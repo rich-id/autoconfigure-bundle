@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Factory;
 
+use RichId\AutoconfigureBundle\Factory\Partials\ArgumentAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\DecorationAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\EventListenerServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\ServiceConfigurationFactoryInterface;
@@ -20,6 +21,7 @@ final class ServiceConfigurationFactory
 {
     /** @var string[] */
     public const FACTORIES = [
+        ArgumentAnnotationServiceConfigurationFactory::class,
         DecorationAnnotationServiceConfigurationFactory::class,
         EventListenerServiceConfigurationFactory::class,
         TagAnnotationServiceConfigurationFactory::class,

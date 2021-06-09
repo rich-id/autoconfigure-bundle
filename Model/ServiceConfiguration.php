@@ -15,6 +15,9 @@ final class ServiceConfiguration
     /** @var string|null */
     private $decoratedService;
 
+    /** @var array<string, array> */
+    private $arguments = [];
+
     /** @var array<array> */
     private $tags = [];
 
@@ -29,6 +32,12 @@ final class ServiceConfiguration
         return $this->tags;
     }
 
+    /** @return array<string, array> */
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
     public function decorates(string $decoratedService): self
     {
         $this->decoratedService = $decoratedService;
@@ -39,6 +48,13 @@ final class ServiceConfiguration
     public function addTag(array $options): self
     {
         $this->tags[] = $options;
+
+        return $this;
+    }
+
+    public function setArgument(string $argument, array $options): self
+    {
+        $this->arguments[$argument] = $options;
 
         return $this;
     }
