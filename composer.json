@@ -1,6 +1,6 @@
 {
     "name": "rich-id/autoconfigure-bundle",
-    "description": "A magic bundle",
+    "description": "Create easy autoconfigurations with annotations to add tag to a service, inject service and arguments, or decorate another service",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
