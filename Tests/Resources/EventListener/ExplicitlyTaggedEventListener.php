@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Tests\Resources\EventListener;
 
-use RichId\AutoconfigureBundle\Annotation\EventListener;
+use RichId\AutoconfigureBundle\Annotation as Service;
 use RichId\AutoconfigureBundle\Tests\Resources\Event\DummyEvent;
 
 /**
@@ -13,7 +13,7 @@ use RichId\AutoconfigureBundle\Tests\Resources\Event\DummyEvent;
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  *
- * @EventListener(event=DummyEvent::class, priority=10)
+ * @Service\EventListener(event=DummyEvent::class, priority=10)
  */
 class ExplicitlyTaggedEventListener
 {

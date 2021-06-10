@@ -15,7 +15,24 @@ Short description
 
 # Quick start
 
-Quick showcase
+Import the annotation like following, and use them to configure your service
+
+```php
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+/**
+ * @Service\Argument("$service", DecorationEventListener::class)
+ * @Service\Decoration("any_service")
+ * @Service\Tag(name="special_tag")
+ */
+final class DummyClass
+{
+    public function __construct($service)
+    {
+        ...
+    }
+}
+```
 
 # Table of content
 

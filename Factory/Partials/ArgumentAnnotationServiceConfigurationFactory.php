@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use RichId\AutoconfigureBundle\Annotation\ServiceArgument;
+use RichId\AutoconfigureBundle\Annotation\Argument;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
 /**
@@ -39,11 +39,11 @@ final class ArgumentAnnotationServiceConfigurationFactory implements ServiceConf
         $classAnnotations = self::$annotationReader->getClassAnnotations($reflectionClass);
 
         return \array_filter($classAnnotations, static function ($annotation): bool {
-            return $annotation instanceof ServiceArgument;
+            return $annotation instanceof Argument;
         });
     }
 
-    private static function buildServiceConfiguration(ServiceArgument $serviceArgument): ServiceConfiguration
+    private static function buildServiceConfiguration(Argument $serviceArgument): ServiceConfiguration
     {
         $configuration = new ServiceConfiguration();
         $configuration->setArgument(

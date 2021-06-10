@@ -8,7 +8,7 @@ use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
 use Doctrine\ORM\Mapping\Annotation;
 
 /**
- * Class ServiceArgument.
+ * Class Argument.
  *
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\Annotation;
  * @Annotation({"CLASS"})
  * @NamedArgumentConstructor()
  */
-final class ServiceArgument implements Annotation
+final class Argument implements Annotation
 {
     public const SERVICE_TYPE = 'service';
     public const PARAMETER_TYPE = 'parameter';

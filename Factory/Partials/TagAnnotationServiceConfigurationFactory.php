@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use RichId\AutoconfigureBundle\Annotation\ServiceTag;
+use RichId\AutoconfigureBundle\Annotation\Tag;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
 /**
@@ -39,11 +39,11 @@ final class TagAnnotationServiceConfigurationFactory implements ServiceConfigura
         $classAnnotations = self::$annotationReader->getClassAnnotations($reflectionClass);
 
         return \array_filter($classAnnotations, static function ($annotation): bool {
-            return $annotation instanceof ServiceTag;
+            return $annotation instanceof Tag;
         });
     }
 
-    private static function buildServiceConfiguration(ServiceTag $serviceTag): ServiceConfiguration
+    private static function buildServiceConfiguration(Tag $serviceTag): ServiceConfiguration
     {
         $options = $serviceTag->options;
         $reflectionClass = new \ReflectionClass($serviceTag);

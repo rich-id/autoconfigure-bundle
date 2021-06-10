@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use RichId\AutoconfigureBundle\Annotation\ServiceDecoration;
+use RichId\AutoconfigureBundle\Annotation\Decoration;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
 /**
@@ -39,11 +39,11 @@ final class DecorationAnnotationServiceConfigurationFactory implements ServiceCo
         $classAnnotations = self::$annotationReader->getClassAnnotations($reflectionClass);
 
         return \array_filter($classAnnotations, static function ($annotation): bool {
-            return $annotation instanceof ServiceDecoration;
+            return $annotation instanceof Decoration;
         });
     }
 
-    private static function buildServiceConfiguration(ServiceDecoration $serviceDecorator): ServiceConfiguration
+    private static function buildServiceConfiguration(Decoration $serviceDecorator): ServiceConfiguration
     {
         $configuration = new ServiceConfiguration();
         $configuration->decorates($serviceDecorator->decorates);

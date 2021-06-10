@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\DependencyInjection\CompilerPass;
 
 use RichCongress\BundleToolbox\Configuration\AbstractCompilerPass;
-use RichId\AutoconfigureBundle\Annotation\ServiceArgument;
+use RichId\AutoconfigureBundle\Annotation\Argument;
 use RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 use Symfony\Component\Cache\Psr16Cache;
@@ -68,11 +68,11 @@ class AutoconfigureCompilerPass extends AbstractCompilerPass
             $value = $options['value'] ?? null;
 
             switch ($type) {
-                case ServiceArgument::SERVICE_TYPE:
+                case Argument::SERVICE_TYPE:
                     $definition->setArgument($argument, new Reference($value));
                     break;
 
-                case ServiceArgument::PARAMETER_TYPE:
+                case Argument::PARAMETER_TYPE:
                     $definition->setArgument($argument, $container->getParameter($value));
                     break;
 

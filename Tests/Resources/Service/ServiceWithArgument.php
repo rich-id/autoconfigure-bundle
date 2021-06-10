@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Tests\Resources\Service;
 
-use RichId\AutoconfigureBundle\Annotation\ServiceArgument;
+use RichId\AutoconfigureBundle\Annotation as Service;
 use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationEventListener;
 
 /**
@@ -13,8 +13,8 @@ use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationEventListener
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  *
- * @ServiceArgument("$service", DecorationEventListener::class)
- * @ServiceArgument("$parameter", "test_parameter", type="parameter")
+ * @Service\Argument("$service", DecorationEventListener::class)
+ * @Service\Argument("$parameter", "test_parameter", type="parameter")
  */
 final class ServiceWithArgument
 {
