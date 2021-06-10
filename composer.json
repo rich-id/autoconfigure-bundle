@@ -28,7 +28,8 @@
     "autoload": {
         "psr-4": {
             "RichId\\AutoconfigureBundle\\": ""
-        }
+        },
+		"exclude-from-classmap": ["phpinsights.php"]
     },
     "autoload-dev": {
         "psr-4": {
