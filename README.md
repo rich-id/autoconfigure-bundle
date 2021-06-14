@@ -54,7 +54,7 @@ composer require rich-id/autoconfigure-bundle
 
 # 2 Getting started
 
-- [Configuration](Docs/Configuration.md)
+- [Configuration](docs/Configuration.md)
 
 # 3. Versioning
 

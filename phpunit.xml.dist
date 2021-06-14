@@ -21,13 +21,13 @@
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory suffix="Test.php">Tests</directory>
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./</directory>
+            <directory suffix=".php">./src</directory>
             <exclude>
                 <directory>bin</directory>
                 <directory>DependencyInjection</directory>

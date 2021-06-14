@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RichId\\AutoconfigureBundle\\": ""
+            "RichId\\AutoconfigureBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RichId\\AutoconfigureBundle\\Tests\\": "Tests/"
+            "RichId\\AutoconfigureBundle\\Tests\\": "tests/"
         }
     },
     "config": {
