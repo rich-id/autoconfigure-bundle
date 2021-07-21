@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping\Annotation;
  *
  * @Annotation({"CLASS"})
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
 class Tag implements Annotation
 {
     /** @var string */

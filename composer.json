@@ -16,7 +16,7 @@
         "issues": "https://github.com/rich-id/autoconfigure-bundle/issues"
     },
     "require": {
-        "php": ">=7.3",
+        "php": "^7.3 || ^8.0",
         "richcongress/bundle-toolbox": "*"
     },
     "require-dev": {

@@ -14,6 +14,7 @@ namespace RichId\AutoconfigureBundle\Annotation;
  *
  * @Annotation({"CLASS"})
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
 class EventListener extends Tag
 {
     /** @var string */

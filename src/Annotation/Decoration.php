@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping\Annotation;
  * @Annotation({"CLASS"})
  * @NamedArgumentConstructor()
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
 class Decoration implements Annotation
 {
     /** @var string */

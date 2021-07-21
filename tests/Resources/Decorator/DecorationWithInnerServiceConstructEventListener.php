@@ -10,9 +10,8 @@ use RichId\AutoconfigureBundle\Tests\Resources\EventListener\ExplicitlyTaggedEve
 /**
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
- *
- * @Service\Decoration(ExplicitlyTaggedEventListener::class)
  */
+#[Service\Decoration(ExplicitlyTaggedEventListener::class)]
 final class DecorationWithInnerServiceConstructEventListener extends ExplicitlyTaggedEventListener
 {
     /** @var ExplicitlyTaggedEventListener */

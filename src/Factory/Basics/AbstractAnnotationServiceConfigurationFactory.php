@@ -51,6 +51,17 @@ abstract class AbstractAnnotationServiceConfigurationFactory implements ServiceC
         self::$annotationReader = self::$annotationReader ?? new AnnotationReader();
         $classAnnotations = self::$annotationReader->getClassAnnotations($reflectionClass);
 
+        if (\method_exists($reflectionClass, 'getAttributes')) {
+            $attributes = \array_map(
+                static function ($reflectionAttribute) {
+                    return $reflectionAttribute->newInstance();
+                },
+                $reflectionClass->getAttributes()
+            );
+
+            $classAnnotations = \array_merge($classAnnotations, $attributes);
+        }
+
         return \array_filter($classAnnotations, static function ($annotation): bool {
             return $annotation instanceof static::$annotationClass;
         });
