@@ -1,0 +1,21 @@
+== Tag a service
+
+If you have a service that requires to manually tag a service since no previous case fits your needs, there is still the `Tag` annotation/attribute.
+
+The following example tags the service, and is the equivalent of `{ name: 'an_event', label: 'This is a test' }`.
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[
+    Service\Tag(
+        'an_event',
+        options=['label' => 'This is a test']
+    )
+]
+public RandomService
+{
+    // ...
+}
+----

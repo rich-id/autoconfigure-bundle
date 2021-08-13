@@ -1,0 +1,43 @@
+== Inject a service or an argument
+
+Sometimes it is required to inject a service that is not autowired, or a specific parameter without accessing to the whole ParameterBag.
+
+=== In the constructor
+
+To do so, add the `Argument` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service and the default locale into the constructor:
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[
+    Service\Argument('$doctrine', 'doctrine'),
+    Service\Argument('$locale', 'kernel.default_locale', type='parameter'),
+]
+class RandomService
+{
+    public function __construct($doctrine, string $locale)
+    {
+        ...
+    }
+}
+----
+
+=== In a public property
+
+To do so, add the `Property` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service and the default locale into the corresponding public properties:
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[
+    Service\Property('$doctrine', 'doctrine'),
+    Service\Property('$locale', 'kernel.default_locale', type='parameter'),
+]
+class RandomService
+{
+    public $doctrine;
+    public string $locale;
+}
+----

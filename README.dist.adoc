@@ -1,0 +1,124 @@
+:toc: macro
+:toc-title:
+:toclevels: 2
+:sectnums:
+:sectnumlevels: 2
+
+ifdef::env-github[]
+++++
+<p align="center">
+  <img src="./.github/logo.svg">
+</p>
+++++
+endif::[]
+
+ifndef::env-github[]
+image:.github/logo.svg[Logo, align=center]
+endif::[]
+
+image:https://img.shields.io/packagist/v/rich-id/autoconfigure-bundle[link="https://packagist.org/packages/rich-id/autoconfigure-bundle",window="_blank"]
+image:https://github.com/rich-id/autoconfigure-bundle/workflows/Tests/badge.svg[link="https://github.com/rich-id/autoconfigure-bundle/actions",window="_blank"]
+image:https://coveralls.io/repos/github/rich-id/autoconfigure-bundle/badge.svg?branch=master[link="https://coveralls.io/github/rich-id/autoconfigure-bundle?branch=master",window="_blank"]
+image:https://api.codeclimate.com/v1/badges/34f1b05d305f5869c109/maintainability[link="https://codeclimate.com/github/rich-id/autoconfigure-bundle/maintainability",window="_blank"]
+image:https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat[link="https://github.com/richcongress/test-suite/issues",window="_blank"]
+image:https://img.shields.io/badge/license-MIT-blue.svg[link="LICENSE",window="_blank"]
+image:https://img.shields.io/badge/PHP-7.3%2B-yellow[]
+image:https://img.shields.io/badge/PHP-8.0%2B-yellow[]
+image:https://img.shields.io/badge/Symfony-4%2B-black[]
+image:https://img.shields.io/badge/Symfony-5%2B-black[]
+
+Simplify the service declaration and tagging for Symfony.
+
+
+[discrete]
+== Table of content
+
+toc::[]
+
+
+== Quick showcase
+
+Import the annotation/annotation, and use them to configure your service like following:
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+/**
+ * @Service\Argument("$service", DecorationEventListener::class)
+ * @Service\Decoration("any_service")
+ * @Service\Tag(name="special_tag")
+ */
+final class DummyClass
+{
+    public function __construct($service)
+    {
+        ...
+    }
+}
+----
+
+== Installation
+
+This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
+
+[source,bash]
+----
+composer require rich-id/autoconfigure-bundle
+----
+
+
+== Documentation
+
+=== link:docs/ServiceArgumentInjection.adoc[Inject a service or an argument]
+=== link:docs/EventListener.adoc[Add an EventListener]
+=== link:docs/Decoration.adoc[Decorate a service]
+=== link:docs/Tagging.adoc[Tag a service]
+
+
+== Versioning
+
+autoconfigure-bundle follows link:https://semver.org/[semantic versioning^]. In short the scheme is MAJOR.MINOR.PATCH where
+1. MAJOR is bumped when there is a breaking change,
+2. MINOR is bumped when a new feature is added in a backward-compatible way,
+3. PATCH is bumped when a bug is fixed in a backward-compatible way.
+
+Versions bellow 1.0.0 are considered experimental and breaking changes may occur at any time.
+
+
+== Contributing
+
+Contributions are welcomed! There are many ways to contribute, and we appreciate all of them. Here are some of the major ones:
+
+* link:https://github.com/rich-id/autoconfigure-bundle/issues[Bug Reports^]: While we strive for quality software, bugs can happen, and we can't fix issues we're not aware of. So please report even if you're not sure about it or just want to ask a question. If anything the issue might indicate that the documentation can still be improved!
+* link:https://github.com/rich-id/autoconfigure-bundle/issues[Feature Request^]: You have a use case not covered by the current api? Want to suggest a change or add something? We'd be glad to read about it and start a discussion to try to find the best possible solution.
+* link:https://github.com/rich-id/autoconfigure-bundle/pulls[Pull Request^]: Want to contribute code or documentation? We'd love that! If you need help to get started, GitHub as link:https://help.github.com/articles/about-pull-requests/[documentation^] on pull requests. We use the link:https://help.github.com/articles/about-collaborative-development-models/["fork and pull model"^] were contributors push changes to their personal fork and then create pull requests to the main repository. Please make your pull requests against the `master` branch.
+
+As a reminder, all contributors are expected to follow our link:./CODE_OF_CONDUCT.md[Code of Conduct].
+
+
+== License
+
+autoconfigure-bundle is distributed under the terms of the MIT license.
+
+See link:./LICENSE[LICENSE] for details.
+
+
+== Hacking
+
+You might use Docker and `docker-compose` to hack the project. Check out the following commands.
+
+[source,bash]
+----
+# Start the project
+docker-compose up -d
+
+# Install dependencies
+docker-compose exec application composer install
+
+# Run tests
+docker-compose exec application bin/phpunit
+
+# Run a bash within the container
+docker-compose exec application bash
+----

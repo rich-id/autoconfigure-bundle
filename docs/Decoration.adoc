@@ -1,0 +1,25 @@
+== Decorate a service
+
+Since the default way of decorating a service is pretty fastidious (adding explicit declaration of the service into your service.yaml), here is an easier way to do the same and even more.
+
+By using the annotation/attribute `Decoration`, you will decorate the targeted service by the actual one. Moreover, the decorated service will be bound to the argument, property or method in the following order:
+
+- To the argument `$innerService` in the Constructor
+- To the property `$innerService` if it is public
+- To the method `setInnerService` if it is public
+
+Here is an example of a service that decorates another one. The decorated service is available via the public property.
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[Service\Decoration(AnInterface::class)]
+class RandomService implements AnInterface
+{
+    public AnInterface $innerService;
+
+    // ...
+}
+----
+

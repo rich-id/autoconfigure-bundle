@@ -6,9 +6,9 @@ This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
 [![Package version](https://img.shields.io/packagist/v/rich-id/autoconfigure-bundle)](https://packagist.org/packages/rich-id/autoconfigure-bundle)
 [![Actions Status](https://github.com/rich-id/autoconfigure-bundle/workflows/Tests/badge.svg)](https://github.com/t/rich-id/autoconfigure-bundle/actions)
 [![Coverage Status](https://coveralls.io/repos/github/rich-id/autoconfigure-bundle/badge.svg?branch=master)](https://coveralls.io/github/rich-id/autoconfigure-bundle?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/34f1b05d305f5869c109/maintainability)](https://codeclimate.com/github/rich-id/autoconfigure-bundle/maintainability)
+[![Maintainability]()](https://codeclimate.com/github/rich-id/autoconfigure-bundle/maintainability)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rich-id/autoconfigure-bundle/issues)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Short description
 
@@ -100,4 +100,4 @@ docker-compose exec application bash
 
 autoconfigure-bundle is distributed under the terms of the MIT license.
 
-See [LICENSE](LICENSE.md) for details.
+See [LICENSE](LICENSE) for details.

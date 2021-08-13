@@ -1,0 +1,43 @@
+== Add an EventListener
+
+Adding explicitly the tag to a service especially for something as common as an EventListener can add a lot of meaningless declaration in your services declaration file.
+
+To do so, you can use the `EventListenerInterface` to easily add this tag:
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\EventListener\EventListenerInterface;
+
+public AnEventListener implements EventListenerInterface
+{
+    public function __invoke(AnEvent $event): void
+    {
+        // ...
+    }
+}
+----
+
+
+Sometimes, a more fine control on the argument is required especially since the legacy approach was to name the event differently from its class. Enter the `EventListener` annotation where the event, priority, method and other options can be set.
+
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[
+    Service\EventListener(
+        'an_event',
+        priority=10,
+        method='onEvent',
+        options=['label' => 'This is a test']
+    )
+]
+public AnEventListener implements EventListenerInterface
+{
+    public function onEvent(AnEvent $event): void
+    {
+        // ...
+    }
+}
+----
