@@ -17,11 +17,11 @@
     },
     "require": {
         "php": "^7.3 || ^8.0",
-        "richcongress/bundle-toolbox": "*"
+        "richcongress/bundle-toolbox": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
-        "richcongress/static-analysis": "dev-master",
+        "phpunit/phpunit": "^9.5",
+        "richcongress/static-analysis": "^0.1",
         "richcongress/test-suite": "^0.1",
         "roave/security-advisories": "dev-latest"
     },
@@ -36,25 +36,25 @@
         }
     },
     "config": {
-        "bin-dir": "bin",
         "discard-changes": true,
         "sort-packages": true
     },
     "scripts": {
         "post-install-cmd": [
-            "cghooks add --ignore-lock"
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || cghooks add --ignore-lock"
         ],
         "post-update-cmd": [
-            "cghooks update"
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || cghooks update"
         ]
     },
     "extra": {
         "hooks": {
             "pre-commit": [
-                "./bin/php-cs-fixer fix ./ --allow-risky=yes"
+                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix"
             ],
             "pre-push": [
-                "./bin/php-cs-fixer fix ./ --dry-run --allow-risky=yes"
+                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run",
+                "./vendor/richcongress/static-analysis/bin/static_analysis"
             ]
         }
     }

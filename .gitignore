@@ -32,3 +32,5 @@ cghooks.lock
 
 # PHP CS Fixer
 /.php_cs.cache
+.php-cs-fixer.cache
+

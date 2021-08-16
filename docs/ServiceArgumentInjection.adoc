@@ -32,8 +32,8 @@ To do so, add the `Property` annotation/attribute on the class with the appropri
 use RichId\AutoconfigureBundle\Annotation as Service;
 
 #[
-    Service\Property('$doctrine', 'doctrine'),
-    Service\Property('$locale', 'kernel.default_locale', type='parameter'),
+    Service\Property('doctrine', 'doctrine'),
+    Service\Property('locale', 'kernel.default_locale', type='parameter'),
 ]
 class RandomService
 {

@@ -25,8 +25,10 @@ final class ArgumentAutoConfigurator implements ServiceAutoConfiguratorInterface
         ServiceConfiguration $configuration
     ): void {
         foreach ($configuration->getArguments() as $argument => $options) {
+            $sanitizedArgument = $argument[0] === '$' ? $argument : '$' . $argument;
+
             $definition->setArgument(
-                $argument,
+                $sanitizedArgument,
                 $this->getObject($container, $options)
             );
         }

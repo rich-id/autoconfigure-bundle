@@ -1,8 +1,8 @@
 name: Tests
-on: [push, pull_request]
+on: [push]
 
 jobs:
-    build-and-test:
+    phpunit:
         runs-on: ubuntu-18.04
         steps:
             - name: Checkout 🛎️
@@ -27,11 +27,11 @@ jobs:
 
             - name: Execute the tests 🔧
               run: |
-                  docker-compose exec -T application php -d extension=pcov.so ./bin/phpunit --configuration phpunit.xml.dist --coverage-text --coverage-clover build/logs/clover.xml
+                  docker-compose exec -T application php -d extension=pcov.so ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist --colors=never --coverage-text --log-junit reports/junit.xml --coverage-html reports/coverage --coverage-clover build/logs/clover.xml
 
             - name: Upload results to Coveralls 🚀
               env:
                   COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_SECRET }}
               run: |
-                  docker-compose exec -T application composer global require twinh/php-coveralls --prefer-dist --no-interaction --no-progress
-                  docker-compose exec -T -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" application /home/application/.composer/vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+                  docker-compose exec -T application composer global require php-coveralls/php-coveralls --prefer-dist --no-interaction --no-progress
+                  docker-compose exec -T -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" application /home/application/.composer/vendor/php-coveralls/php-coveralls/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v

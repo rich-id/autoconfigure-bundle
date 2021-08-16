@@ -27,14 +27,15 @@ final class PropertyAutoConfigurator implements ServiceAutoConfiguratorInterface
         foreach ($configuration->getProperties() as $property => $options) {
             $type = $options['type'] ?? null;
             $value = $options['value'] ?? null;
+            $sanitizedProperty = \str_replace('$', '', $property);
 
             switch ($type) {
                 case Property::SERVICE_TYPE:
-                    $definition->setProperty($property, new Reference($value));
+                    $definition->setProperty($sanitizedProperty, new Reference($value));
                     break;
 
                 case Property::PARAMETER_TYPE:
-                    $definition->setProperty($property, $container->getParameter($value));
+                    $definition->setProperty($sanitizedProperty, $container->getParameter($value));
                     break;
 
                 default:
