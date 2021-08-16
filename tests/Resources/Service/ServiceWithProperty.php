@@ -13,20 +13,14 @@ use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationWithInnerServ
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  *
- * @Service\Argument("service", DecorationWithInnerServicePropertyEventListener::class)
- * @Service\Argument("$parameter", "test_parameter", type="parameter")
+ * @Service\Property("$service", DecorationWithInnerServicePropertyEventListener::class)
+ * @Service\Property("parameter", "test_parameter", type="parameter")
  */
-final class ServiceWithArgument
+final class ServiceWithProperty
 {
     /** @var DecorationWithInnerServicePropertyEventListener */
     public $service;
 
     /** @var string */
     public $parameter;
-
-    public function __construct($service, $parameter)
-    {
-        $this->service = $service;
-        $this->parameter = $parameter;
-    }
 }

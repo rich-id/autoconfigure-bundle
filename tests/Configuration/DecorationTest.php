@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichId\AutoconfigureBundle\Tests;
+namespace RichId\AutoconfigureBundle\Tests\Configuration;
 
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
@@ -19,6 +19,13 @@ use RichId\AutoconfigureBundle\Tests\Resources\EventListener\FromInterfaceEventL
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  *
  * @TestConfig("container")
+ *
+ * @covers \RichId\AutoconfigureBundle\Annotation\Decoration
+ * @covers \RichId\AutoconfigureBundle\Configurators\Partials\DecorationAutoConfigurator
+ * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
+ * @covers \RichId\AutoconfigureBundle\Factory\Partials\DecorationAnnotationServiceConfigurationFactory
+ * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class DecorationTest extends TestCase
 {

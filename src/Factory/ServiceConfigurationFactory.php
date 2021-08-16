@@ -8,6 +8,7 @@ use RichId\AutoconfigureBundle\Factory\Basics\ServiceConfigurationFactoryInterfa
 use RichId\AutoconfigureBundle\Factory\Partials\ArgumentAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\DecorationAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\EventListenerServiceConfigurationFactory;
+use RichId\AutoconfigureBundle\Factory\Partials\PropertyAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Factory\Partials\TagAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
@@ -24,6 +25,7 @@ final class ServiceConfigurationFactory
         ArgumentAnnotationServiceConfigurationFactory::class,
         DecorationAnnotationServiceConfigurationFactory::class,
         EventListenerServiceConfigurationFactory::class,
+        PropertyAnnotationServiceConfigurationFactory::class,
         TagAnnotationServiceConfigurationFactory::class,
     ];
 

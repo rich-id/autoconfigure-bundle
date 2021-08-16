@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichId\AutoconfigureBundle\Tests;
+namespace RichId\AutoconfigureBundle\Tests\Configuration;
 
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
