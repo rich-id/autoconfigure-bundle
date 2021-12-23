@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Factory\Basics;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\ORM\Mapping\Annotation;
+use RichId\AutoconfigureBundle\Annotation\AutoconfigureAnnotation;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
 /**
@@ -69,6 +69,6 @@ abstract class AbstractAnnotationServiceConfigurationFactory implements ServiceC
 
     abstract protected static function hydrateServiceConfiguration(
         ServiceConfiguration $configuration,
-        Annotation $annotation
+        AutoconfigureAnnotation $annotation
     ): ServiceConfiguration;
 }

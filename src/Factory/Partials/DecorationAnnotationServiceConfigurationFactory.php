@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
-use Doctrine\ORM\Mapping\Annotation;
 use RichId\AutoconfigureBundle\Annotation\Argument;
+use RichId\AutoconfigureBundle\Annotation\AutoconfigureAnnotation;
 use RichId\AutoconfigureBundle\Annotation\Decoration;
 use RichId\AutoconfigureBundle\Annotation\Property;
 use RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory;
@@ -23,10 +23,10 @@ final class DecorationAnnotationServiceConfigurationFactory extends AbstractAnno
     /** @var string */
     protected static $annotationClass = Decoration::class;
 
-    /** @param Annotation|Decoration $annotation */
+    /** @param AutoconfigureAnnotation|Decoration $annotation */
     protected static function hydrateServiceConfiguration(
         ServiceConfiguration $configuration,
-        Annotation $annotation
+        AutoconfigureAnnotation $annotation
     ): ServiceConfiguration {
         $configuration->decorates($annotation->decorates);
         self::injectDecoratedService($configuration);

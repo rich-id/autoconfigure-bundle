@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
-use Doctrine\ORM\Mapping\Annotation;
+use RichId\AutoconfigureBundle\Annotation\AutoconfigureAnnotation;
 use RichId\AutoconfigureBundle\Annotation\Tag;
 use RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
@@ -20,10 +20,10 @@ final class TagAnnotationServiceConfigurationFactory extends AbstractAnnotationS
     /** @var string */
     protected static $annotationClass = Tag::class;
 
-    /** @param Annotation|Tag $annotation */
+    /** @param AutoconfigureAnnotation|Tag $annotation */
     protected static function hydrateServiceConfiguration(
         ServiceConfiguration $configuration,
-        Annotation $annotation
+        AutoconfigureAnnotation $annotation
     ): ServiceConfiguration {
         $options = $annotation->options;
         $reflectionClass = new \ReflectionClass($annotation);

@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping\Annotation;
  * @NamedArgumentConstructor()
  */
 #[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
-class Decoration implements Annotation
+class Decoration implements AutoconfigureAnnotation
 {
     /** @var string */
     public $decorates;
