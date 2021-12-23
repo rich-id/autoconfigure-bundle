@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
-use Doctrine\ORM\Mapping\Annotation;
 use RichId\AutoconfigureBundle\Annotation\Argument;
+use RichId\AutoconfigureBundle\Annotation\AutoconfigureAnnotation;
 use RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
 
@@ -20,10 +20,10 @@ final class ArgumentAnnotationServiceConfigurationFactory extends AbstractAnnota
     /** @var string */
     protected static $annotationClass = Argument::class;
 
-    /** @param Annotation|Argument $annotation */
+    /** @param AutoconfigureAnnotation|Argument $annotation */
     protected static function hydrateServiceConfiguration(
         ServiceConfiguration $configuration,
-        Annotation $annotation
+        AutoconfigureAnnotation $annotation
     ): ServiceConfiguration {
         $configuration->setArgument(
             $annotation->argument,

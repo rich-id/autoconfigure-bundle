@@ -17,6 +17,7 @@
     },
     "require": {
         "php": "^7.3 || ^8.0",
+        "doctrine/annotations": "^1.0",
         "richcongress/bundle-toolbox": "^1.0"
     },
     "require-dev": {

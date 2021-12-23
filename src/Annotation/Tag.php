@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Annotation;
 
-use Doctrine\ORM\Mapping\Annotation;
-
 /**
  * Class Tag.
  *
@@ -19,7 +17,7 @@ use Doctrine\ORM\Mapping\Annotation;
  * @Annotation({"CLASS"})
  */
 #[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
-class Tag implements Annotation
+class Tag implements AutoconfigureAnnotation
 {
     /** @var string */
     public $name;

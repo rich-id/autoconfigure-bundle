@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
-use Doctrine\ORM\Mapping\Annotation;
 
 /**
  * Class Argument.
@@ -19,7 +18,7 @@ use Doctrine\ORM\Mapping\Annotation;
  * @NamedArgumentConstructor()
  */
 #[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
-final class Argument implements Annotation
+final class Argument implements AutoconfigureAnnotation
 {
     public const SERVICE_TYPE = 'service';
     public const PARAMETER_TYPE = 'parameter';
