@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\AutoconfigureBundle\Configurators\Basics;
 
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\Definition;
 interface ServiceAutoConfiguratorInterface
 {
     public function autoconfigure(
-        Container $container,
+        ContainerBuilder $container,
         Definition $definition,
         ServiceConfiguration $configuration
     ): void;

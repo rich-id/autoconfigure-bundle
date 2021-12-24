@@ -15,6 +15,11 @@ abstract class DefinitionTestCase extends TestCase
     {
         $containerBuilder = new ContainerBuilder();
         $containerBuilder->setParameter('test_parameter', 'This is a test');
+
+        $definition = new Definition();
+        $definition->addTag('console.command');
+        $containerBuilder->setDefinition('random_command', $definition);
+
         $definition = new Definition($class);
         ServiceAutoConfigurator::autoconfigure($containerBuilder, $definition);
 

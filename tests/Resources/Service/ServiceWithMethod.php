@@ -14,11 +14,11 @@ use Symfony\Component\Console\Command\Command;
  * @author     Nicolas Guilloux <nicolas.guilloux@rich-id.fr>
  * @copyright  2014 - 2021 Rich ID (https://www.rich-id.fr)
  *
- * @Service\Argument("service", DecorationWithInnerServicePropertyEventListener::class)
- * @Service\Argument("$parameter", "test_parameter", type="parameter")
- * @Service\Argument("commands", value="console.command", type="services_by_tag")
+ * @Service\Method("setValues", DecorationWithInnerServicePropertyEventListener::class)
+ * @Service\Method("setValues", "test_parameter", type="parameter", position=1)
+ * @Service\Method("setCommands", value="console.command", type="services_by_tag")
  */
-final class ServiceWithArgument
+final class ServiceWithMethod
 {
     /** @var DecorationWithInnerServicePropertyEventListener */
     public $service;
@@ -29,10 +29,17 @@ final class ServiceWithArgument
     /** @var Command[] */
     public $commands;
 
-    public function __construct($service, $parameter, $commands)
+    public function setValues(DecorationWithInnerServicePropertyEventListener $service, string $parameter): void
     {
         $this->service = $service;
         $this->parameter = $parameter;
+    }
+
+    /** @param Command[] $commands */
+    public function setCommands(array $commands): self
+    {
         $this->commands = $commands;
+
+        return $this;
     }
 }

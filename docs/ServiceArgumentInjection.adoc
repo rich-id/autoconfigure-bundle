@@ -4,7 +4,7 @@ Sometimes it is required to inject a service that is not autowired, or a specifi
 
 === In the constructor
 
-To do so, add the `Argument` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service and the default locale into the constructor:
+To do so, add the `Argument` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service, the default locale and all the tagged command into the constructor:
 
 [source, php]
 ----
@@ -13,10 +13,11 @@ use RichId\AutoconfigureBundle\Annotation as Service;
 #[
     Service\Argument('$doctrine', 'doctrine'),
     Service\Argument('$locale', 'kernel.default_locale', type='parameter'),
+    Service\Argyment('commands', 'console.command', type='services_by_tag'),
 ]
 class RandomService
 {
-    public function __construct($doctrine, string $locale)
+    public function __construct($doctrine, string $locale, array $commands)
     {
         ...
     }
@@ -25,7 +26,7 @@ class RandomService
 
 === In a public property
 
-To do so, add the `Property` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service and the default locale into the corresponding public properties:
+To do so, add the `Property` annotation/attribute on the class with the appropriate values. Here is an example where we inject the `doctrine` service, the default locale and all the tagged commands into the corresponding public properties:
 
 [source, php]
 ----
@@ -34,10 +35,39 @@ use RichId\AutoconfigureBundle\Annotation as Service;
 #[
     Service\Property('doctrine', 'doctrine'),
     Service\Property('locale', 'kernel.default_locale', type='parameter'),
+    Service\Property('commands', 'console.command', type='services_by_tag'),
 ]
 class RandomService
 {
     public $doctrine;
     public string $locale;
+    public array $commands;
+}
+----
+
+=== In a public method
+
+To do so, add the `Method` annotation/attribute on the class with the appropriate values. Here is an example where we inject the 2 values to a method and all the tagged commands to another one.
+
+[source, php]
+----
+use RichId\AutoconfigureBundle\Annotation as Service;
+
+#[
+    Service\Method('setValues', 'doctrine'),
+    Service\Method('setValues', 'kernel.default_locale', type='parameter', position=1),
+    Service\Method('setCommands', 'console.command', type='services_by_tag'),
+]
+class RandomService
+{
+    public function setValues($doctrine, string $locale): void
+    {
+        // ...
+    }
+
+    public function setCommands(array $commands): void
+    {
+        // ...
+    }
 }
 ----

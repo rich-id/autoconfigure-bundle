@@ -46,4 +46,15 @@ final class ServiceWithArgumentTest extends DefinitionTestCase
         self::assertArrayHasKey('$parameter', $arguments);
         self::assertSame('This is a test', $arguments['$parameter']);
     }
+
+    public function testArgumentServicesByTagInjected(): void
+    {
+        $definition = self::getDefinition(ServiceWithArgument::class);
+        $arguments = $definition->getArguments();
+
+        self::assertArrayHasKey('$commands', $arguments);
+        self::assertIsArray($arguments['$commands']);
+        self::assertCount(1, $arguments['$commands']);
+        self::assertSame('random_command', (string) $arguments['$commands'][0]);
+    }
 }

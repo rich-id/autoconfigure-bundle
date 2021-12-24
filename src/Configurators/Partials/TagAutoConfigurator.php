@@ -6,7 +6,7 @@ namespace RichId\AutoconfigureBundle\Configurators\Partials;
 
 use RichId\AutoconfigureBundle\Configurators\Basics\ServiceAutoConfiguratorInterface;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Definition;
 final class TagAutoConfigurator implements ServiceAutoConfiguratorInterface
 {
     public function autoconfigure(
-        Container $container,
+        ContainerBuilder $container,
         Definition $definition,
         ServiceConfiguration $configuration
     ): void {

@@ -46,4 +46,15 @@ final class ServiceWithPropertyTest extends DefinitionTestCase
         self::assertArrayHasKey('parameter', $properties);
         self::assertSame('This is a test', $properties['parameter']);
     }
+
+    public function testArgumentServicesByTagInjected(): void
+    {
+        $definition = self::getDefinition(ServiceWithProperty::class);
+        $properties = $definition->getProperties();
+
+        self::assertArrayHasKey('commands', $properties);
+        self::assertIsArray($properties['commands']);
+        self::assertCount(1, $properties['commands']);
+        self::assertSame('random_command', (string) $properties['commands'][0]);
+    }
 }

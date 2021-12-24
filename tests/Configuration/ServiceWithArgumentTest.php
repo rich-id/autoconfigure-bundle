@@ -8,6 +8,7 @@ use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationWithInnerServicePropertyEventListener;
 use RichId\AutoconfigureBundle\Tests\Resources\Service\ServiceWithArgument;
+use Symfony\Component\Console\Command\Command;
 
 /**
  * Class ServiceWithArgumentTest.
@@ -17,7 +18,9 @@ use RichId\AutoconfigureBundle\Tests\Resources\Service\ServiceWithArgument;
  *
  * @TestConfig("container")
  *
+ * @covers \RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation
  * @covers \RichId\AutoconfigureBundle\Annotation\Argument
+ * @covers \RichId\AutoconfigureBundle\Configurators\Partials\AbstractServiceInjectionAutoConfigurator
  * @covers \RichId\AutoconfigureBundle\Configurators\Partials\ArgumentAutoConfigurator
  * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
  * @covers \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
@@ -37,5 +40,13 @@ final class ServiceWithArgumentTest extends TestCase
     {
         $service = $this->getService(ServiceWithArgument::class);
         self::assertSame('This is a test', $service->parameter);
+    }
+
+    public function testArgumentServicesByTagInjected(): void
+    {
+        $service = $this->getService(ServiceWithArgument::class);
+
+        self::assertNotEmpty($service->commands);
+        self::assertContainsOnlyInstancesOf(Command::class, $service->commands);
     }
 }
