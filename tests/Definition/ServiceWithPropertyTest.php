@@ -18,13 +18,15 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @TestConfig("container")
  *
- * @covers \RichId\AutoconfigureBundle\Annotation\Property
- * @covers \RichId\AutoconfigureBundle\Configurators\Partials\PropertyAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\Partials\PropertyAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers     \RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation
+ * @covers     \RichId\AutoconfigureBundle\Annotation\Property
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\AbstractServiceInjectionAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\PropertyAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\Partials\PropertyAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class ServiceWithPropertyTest extends DefinitionTestCase
 {

@@ -19,13 +19,15 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @TestConfig("container")
  *
- * @covers \RichId\AutoconfigureBundle\Annotation\Method
- * @covers \RichId\AutoconfigureBundle\Configurators\Partials\MethodCallAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\Partials\MethodAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers     \RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation
+ * @covers     \RichId\AutoconfigureBundle\Annotation\Method
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\AbstractServiceInjectionAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\MethodCallAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\Partials\MethodAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class ServiceWithMethodTest extends DefinitionTestCase
 {
