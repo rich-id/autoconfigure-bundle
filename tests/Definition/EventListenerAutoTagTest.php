@@ -21,10 +21,11 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  * @TestConfig("container")
  *
  * @covers     \RichId\AutoconfigureBundle\Annotation\EventListener
- * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\TagAutoConfigurator
  * @covers     \RichId\AutoconfigureBundle\Factory\Partials\EventListenerServiceConfigurationFactory
  * @covers     \RichId\AutoconfigureBundle\Factory\Partials\TagAnnotationServiceConfigurationFactory
  * @covers     \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class EventListenerAutoTagTest extends DefinitionTestCase
 {

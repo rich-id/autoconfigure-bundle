@@ -18,24 +18,15 @@ use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
  * @NamedArgumentConstructor()
  */
 #[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS)]
-final class Argument implements AutoconfigureAnnotation
+final class Argument extends AbstractServiceInjectionAnnotation
 {
-    public const SERVICE_TYPE = 'service';
-    public const PARAMETER_TYPE = 'parameter';
-
     /** @var string */
     public $argument;
 
-    /** @var string */
-    public $value;
-
-    /** @var string */
-    public $type;
-
     public function __construct(string $argument, string $value, string $type = self::SERVICE_TYPE)
     {
+        parent::__construct($value, $type);
+
         $this->argument = $argument;
-        $this->value = $value;
-        $this->type = $type;
     }
 }

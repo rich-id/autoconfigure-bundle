@@ -63,6 +63,11 @@ final class ServiceConfiguration
         return $this->methodCalls;
     }
 
+    public function getMethodCall(string $method): array
+    {
+        return $this->methodCalls[$method] ?? [];
+    }
+
     /** @return array[] */
     public function getTags(): array
     {
@@ -90,7 +95,7 @@ final class ServiceConfiguration
         return $this;
     }
 
-    public function addMethodCall(string $method, array $arguments): self
+    public function setMethodCall(string $method, array $arguments): self
     {
         $this->methodCalls[$method] = $arguments;
 

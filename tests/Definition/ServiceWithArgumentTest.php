@@ -18,13 +18,15 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @TestConfig("container")
  *
- * @covers \RichId\AutoconfigureBundle\Annotation\Argument
- * @covers \RichId\AutoconfigureBundle\Configurators\Partials\ArgumentAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\Partials\ArgumentAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers     \RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation
+ * @covers     \RichId\AutoconfigureBundle\Annotation\Argument
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\AbstractServiceInjectionAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\ArgumentAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\Partials\ArgumentAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class ServiceWithArgumentTest extends DefinitionTestCase
 {
@@ -45,5 +47,16 @@ final class ServiceWithArgumentTest extends DefinitionTestCase
 
         self::assertArrayHasKey('$parameter', $arguments);
         self::assertSame('This is a test', $arguments['$parameter']);
+    }
+
+    public function testArgumentServicesByTagInjected(): void
+    {
+        $definition = self::getDefinition(ServiceWithArgument::class);
+        $arguments = $definition->getArguments();
+
+        self::assertArrayHasKey('$commands', $arguments);
+        self::assertIsArray($arguments['$commands']);
+        self::assertCount(1, $arguments['$commands']);
+        self::assertSame('random_command', (string) $arguments['$commands'][0]);
     }
 }

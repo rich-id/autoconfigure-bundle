@@ -6,6 +6,7 @@ namespace RichId\AutoconfigureBundle\Tests\Resources\Service;
 
 use RichId\AutoconfigureBundle\Annotation as Service;
 use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationWithInnerServicePropertyEventListener;
+use Symfony\Component\Console\Command\Command;
 
 /**
  * Class ServiceWithArgument.
@@ -15,6 +16,7 @@ use RichId\AutoconfigureBundle\Tests\Resources\Decorator\DecorationWithInnerServ
  *
  * @Service\Property("$service", DecorationWithInnerServicePropertyEventListener::class)
  * @Service\Property("parameter", "test_parameter", type="parameter")
+ * @Service\Property("commands", value="console.command", type="services_by_tag")
  */
 final class ServiceWithProperty
 {
@@ -23,4 +25,7 @@ final class ServiceWithProperty
 
     /** @var string */
     public $parameter;
+
+    /** @var Command[] */
+    public $commands;
 }

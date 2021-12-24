@@ -18,13 +18,15 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @TestConfig("container")
  *
- * @covers \RichId\AutoconfigureBundle\Annotation\Property
- * @covers \RichId\AutoconfigureBundle\Configurators\Partials\PropertyAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
- * @covers \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\Partials\PropertyAnnotationServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
- * @covers \RichId\AutoconfigureBundle\Model\ServiceConfiguration
+ * @covers     \RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation
+ * @covers     \RichId\AutoconfigureBundle\Annotation\Property
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\AbstractServiceInjectionAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\Partials\PropertyAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Configurators\ServiceAutoConfigurator
+ * @covers     \RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\Partials\PropertyAnnotationServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Factory\ServiceConfigurationFactory
+ * @covers     \RichId\AutoconfigureBundle\Model\ServiceConfiguration
  */
 final class ServiceWithPropertyTest extends DefinitionTestCase
 {
@@ -45,5 +47,16 @@ final class ServiceWithPropertyTest extends DefinitionTestCase
 
         self::assertArrayHasKey('parameter', $properties);
         self::assertSame('This is a test', $properties['parameter']);
+    }
+
+    public function testArgumentServicesByTagInjected(): void
+    {
+        $definition = self::getDefinition(ServiceWithProperty::class);
+        $properties = $definition->getProperties();
+
+        self::assertArrayHasKey('commands', $properties);
+        self::assertIsArray($properties['commands']);
+        self::assertCount(1, $properties['commands']);
+        self::assertSame('random_command', (string) $properties['commands'][0]);
     }
 }

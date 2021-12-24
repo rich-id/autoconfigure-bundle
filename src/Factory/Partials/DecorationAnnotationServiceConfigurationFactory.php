@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace RichId\AutoconfigureBundle\Factory\Partials;
 
+use RichId\AutoconfigureBundle\Annotation\AbstractServiceInjectionAnnotation;
 use RichId\AutoconfigureBundle\Annotation\Argument;
 use RichId\AutoconfigureBundle\Annotation\AutoconfigureAnnotation;
 use RichId\AutoconfigureBundle\Annotation\Decoration;
 use RichId\AutoconfigureBundle\Annotation\Property;
 use RichId\AutoconfigureBundle\Factory\Basics\AbstractAnnotationServiceConfigurationFactory;
 use RichId\AutoconfigureBundle\Model\ServiceConfiguration;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class DecorationAnnotationServiceConfigurationFactory.
@@ -111,8 +111,11 @@ final class DecorationAnnotationServiceConfigurationFactory extends AbstractAnno
             return;
         }
 
-        $configuration->addMethodCall('setInnerService', [
-            new Reference($reflectionClass->getName() . '.inner'),
+        $configuration->setMethodCall('setInnerService', [
+            [
+                'type'  => AbstractServiceInjectionAnnotation::SERVICE_TYPE,
+                'value' => $reflectionClass->getName() . '.inner',
+            ],
         ]);
     }
 }
